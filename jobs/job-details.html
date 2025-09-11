@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>JSTACK - Search Jobs</title>
+        <link rel="stylesheet" href="../style.css">
+        
+         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    </head>
+
+    <body>
+        
+        
+        <!-- Header  Section-->
+         <header>
+            <div id="navbar" class="obj-width">
+                <a href="../index.html"> <img class="logo"
+                    src="../images/logo.png"
+                    alt=""></a>
+
+
+                <ul id="menu">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../jobs/job.html">Browse Jobs</a></li>
+                    <li><a href="../contact.html">Contact</a></li>
+                    <button id="w-btn">Join</button>
+                </ul> 
+
+                <i id="bar" class='bx  bx-menu'  ></i> 
+                
+                <i id="bar" class='bxs  bx-menu'  ></i> 
+
+            </div>
+         </header>
+    
+         <div id="jobDetails"
+         class="extra-space obj-width">
+         <div class="job-header">
+            <div class="job-img-row">
+                <img src="../images/google.png" alt="">
+                <div>
+                    <h2>Google</h2>
+                    <span>USA</span>
+                </div>
+            </div>
+            <a id="g-btn" href="#">Apply Now</a>
+         </div>
+
+         <div class="features  obj-width">
+           
+
+            <div class="fe-box">
+                <div>
+                    <img src="../images/vacancy.png" 
+                    alt="">
+                    <h3>Vacancy</h3>
+                    <p>
+                        01 Vacancy
+                    </p>
+                </div>
+                
+                 <div>
+                    <img src="../images/fe 1.png" 
+                    alt="">
+                    <h3>Position</h3>
+                    <p>
+                        Web Developer
+                    </p>
+                </div>
+
+                 <div>
+                    <img src="../images/hour.png" 
+                    alt="">
+                    <h3>Hours</h3>
+                    <p>
+                        50h / week
+                    </p>
+                </div>
+
+                 <div>
+                    <img src="../images/salary.png" 
+                    alt="">
+                    <h3>Salary</h3>
+                    <p>
+                        $900-1200/m
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="job-description sec-space">
+            <h3>Job Description</h3>
+            <p>
+                It is a long established fact that a reader will be distracted by the readable content 
+    of a page when looking at its layout. The point of using Lorem Ipsum is that it has a 
+    more-or-less normal distribution of letters, as opposed to using 'Content here, content here', 
+    making it look like readable English.
+    Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, 
+    and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions 
+    have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+            </p>
+
+            <h3>Employment Status</h3>
+            <p>- Full Time</p>
+
+            <h3>Workplace</h3>
+            <p>- Work from home</p>
+
+            <h3>Educational Requirements</h3>
+            <p>- Bachelor degree in Computer Science.</p>
+
+            <h3>Experience Requirements</h3>
+            <p>- 2 to 5 years</p>
+
+        </div>
+         </div>
+        
+
+        <!-- Footer  Section-->
+
+        <footer class="footer">
+            <div class="obj-width">
+                <div class="top">
+                    <div>
+                        <img class="logo" 
+                        src="../images/logo.png" alt="">
+                        <p>Search your desired jobs.</p>
+                    </div>
+
+                    <div>
+                        <a href="https://www.youtube.com/hashtag/dhruvrathi">
+                            <i class='bx bxl-facebook-square'></i>
+                        </a>
+
+                        <a href="https://www.youtube.com/hashtag/dhruvrathi">
+                            <i class='bx bxl-instagram-alt'></i>
+                        </a>
+
+                        <a href="https://www.youtube.com/hashtag/dhruvrathi">
+                            <i class='bx bxl-behance'></i>
+                        </a>
+
+                        <a href="https://www.youtube.com/hashtag/dhruvrathi">
+                            <i class='bx bxl-twitter'></i>
+                        </a>
+
+
+                    </div>
+
+                </div>
+                
+                <div class="bottom">
+                    <div>
+                        <h3>Project</h3>
+                        
+                        <a href="#"> Changelog</a>
+                        <a href="#"> Status</a>
+                        <a href="#"> Licence</a>
+                        <a href="#"> All Version</a>
+                    </div>
+
+                    <div>
+                        <h3>Community</h3>
+                        
+                        <a href="#"> GitHub</a>
+                        <a href="#"> Issues</a>
+                        <a href="#"> Project</a>
+                        <a href="#"> Twitter</a>
+                    </div>
+
+                    <div>
+                        <h3>Help</h3>
+                    
+                        <a href="#"> Support</a>
+                        <a href="#"> Troubleshooting</a>
+                        <a href="#"> Contact Us</a>
+                    </div>
+
+                    <div>
+                        <h3>Others</h3>
+                        
+                        <a href="#"> Terms of Services</a>
+                        <a href="#"> Privacy</a>
+                        <a href="#"> Licence</a>
+                        
+                    </div>
+                </div>
+            </div>
+
+        </footer>
+
+        <script>
+            document.addEventListener
+            ("DOMContentLoaded" , () => {
+                const urlParam = new URLSearchParams(window.
+                    location.search);
+                const index = urlParam.get("id")
+
+                const selectJob = jCategory[index];
+
+                const jobDetailsContainer = document.getElementById("jobDetails")
+                
+                jobDetailsContainer.innerHTML
+                = `
+                 <div class="job-header">
+            <div class="job-img-row">
+                <img src=${selectJob.image} alt="">
+                <div>
+                    <h2>${selectJob.companyName}</h2>
+                    <span>${selectJob.location}</span>
+                </div>
+            </div>
+            <a id="g-btn" href="#">Apply Now</a>
+         </div>
+
+         <div class="features sec-space obj-width">
+           
+
+            <div class="fe-box">
+                <div>
+                    <img src="../images/vacancy.png" 
+                    alt="">
+                    <h3>Vacancy</h3>
+                    <p>
+                        ${selectJob.vacancy}
+                    </p>
+                </div>
+                
+                 <div>
+                    <img src="../images/fe 1.png" 
+                    alt="">
+                    <h3>Position</h3>
+                    <p>
+                        ${selectJob.title}
+                    </p>
+                </div>
+
+                 <div>
+                    <img src="../images/hour.png" 
+                    alt="">
+                    <h3>Hours</h3>
+                    <p>
+                        ${selectJob.hours}
+                    </p>
+                </div>
+
+                 <div>
+                    <img src="../images/salary.png" 
+                    alt="">
+                    <h3>Salary</h3>
+                    <p>
+                        ${selectJob.rate}
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="job-description sec-space">
+            <h3>Job Description</h3>
+            <p>
+                ${selectJob.description}
+            </p>
+
+            <h3>Employment Status</h3>
+            <p>- ${selectJob.av}</p>
+
+            <h3>Workplace</h3>
+            <p>- ${selectJob.workplace}</p>
+
+            <h3>Educational Requirements</h3>
+            <p>- ${selectJob.education}</p>
+
+            <h3>Experience Requirements</h3>
+            <p>- ${selectJob.experience}</p>
+
+        </div>
+
+                `
+            });
+        </script>
+
+        <script src="jobs-list.js"></script>
+        <script src="../toggle.js"></script>
+        <script src="jobSearch.js"></script>
+    </body>
+
+</html>
