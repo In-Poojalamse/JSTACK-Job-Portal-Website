@@ -29,7 +29,8 @@ const displayItems = (items) =>{
         rootElement.appendChild(jList);
 
         jList.addEventListener('click', ()=> {
-            window.location.href = `job-details.html?id=${index}`;
+            window.location.href = `job-details.html?id=$(index)`;
+
         });
     });
 };

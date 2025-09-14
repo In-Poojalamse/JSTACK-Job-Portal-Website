@@ -174,4 +174,5 @@ const jCategory = [
         education: "Bachelor degree in Computer Science.",
         experience: "2 to 5 years"
      },
- ];
+
+   ];
