@@ -1,17 +1,24 @@
-# Use official lightweight Nginx image to serve static files
-FROM nginx:alpine
+FROM php:8.2-fpm-alpine
 
-# Remove default Nginx website content
-RUN rm -rf /usr/share/nginx/html/*
+# Install nginx and bash
+RUN apk add --no-cache nginx bash
 
-# Copy your entire website files into Nginx's html folder
-COPY . /usr/share/nginx/html
+# Remove default nginx config
+RUN rm /etc/nginx/conf.d/default.conf
 
-# Expose port 10000 (Render expects this port)
+# Copy your custom nginx config (we will create this next)
+COPY nginx.conf /etc/nginx/nginx.conf
+
+# Copy all your project files to web root
+COPY . /var/www/html/
+
+WORKDIR /var/www/html/
+
+# Fix permissions (optional)
+RUN chown -R www-data:www-data /var/www/html
+
+# Expose Render required port
 EXPOSE 10000
 
-# Modify Nginx default config to listen on port 10000 instead of 80
-RUN sed -i 's/80/10000/' /etc/nginx/conf.d/default.conf
-
-# Start Nginx in the foreground
-CMD ["nginx", "-g", "daemon off;"]
+# Start php-fpm and nginx
+CMD ["sh", "-c", "php-fpm & nginx -g 'daemon off;'"]
