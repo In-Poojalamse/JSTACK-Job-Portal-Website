@@ -20,13 +20,14 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         $mail->Host       = 'smtp.gmail.com';
         $mail->SMTPAuth   = true;
         $mail->Username   = 'poojalamse05@gmail.com';        // ✅ Your Gmail
-        $mail->Password   = 'hyey ewee otyl onee';     // ✅ Your App Password (no spaces)
+        $mail->Password   = 'hyeyeweeotylonee';     // ✅ Your App Password (no spaces)
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port       = 587;
 
         // Recipients
-        $mail->setFrom($email, $name);
-        $mail->addAddress('poojalamse05@gmail.com');      // ✅ Your receiving email
+       $mail->setFrom('poojalamse05@gmail.com', 'Job Portal Contact Form');
+        $mail->addAddress('poojalamse05@gmail.com');
+        $mail->addReplyTo($email, $name);
 
         // Content
         $mail->isHTML(false);
