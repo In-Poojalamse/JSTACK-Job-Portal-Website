@@ -1,28 +1,47 @@
 <?php
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require 'PHPMailer/Exception.php';
+require 'PHPMailer/PHPMailer.php';
+require 'PHPMailer/SMTP.php';
+
 if ($_SERVER["REQUEST_METHOD"] == 'POST') {
-    $name = $_POST['name'];
-    $email = $_POST['email'];
+    $name    = $_POST['name'];
+    $email   = $_POST['email'];
     $message = $_POST['message'];
 
-    $to = "poojalamse05@gmail.com";
-    $subject = "New contact form submission";
+    $mail = new PHPMailer(true);
 
-    // Set headers properly
-    $headers  = "From: " . $name . " <" . $email . ">\r\n";
-    $headers .= "Reply-To: " . $email . "\r\n";
-    $headers .= "Content-Type: text/plain; charset=utf-8\r\n";
+    try {
+        // Server settings
+        $mail->isSMTP();
+        $mail->Host       = 'smtp.gmail.com';
+        $mail->SMTPAuth   = true;
+        $mail->Username   = 'poojalamse05@gmail.com';        // ✅ Your Gmail
+        $mail->Password   = 'hyey ewee otyl onee';     // ✅ Your App Password (no spaces)
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        $mail->Port       = 587;
 
-    if (mail($to, $subject, $message, $headers)) {
+        // Recipients
+        $mail->setFrom($email, $name);
+        $mail->addAddress('poojalamse05@gmail.com');      // ✅ Your receiving email
+
+        // Content
+        $mail->isHTML(false);
+        $mail->Subject = 'New Contact Form Submission';
+        $mail->Body    = "Name: $name\nEmail: $email\n\nMessage:\n$message";
+
+        $mail->send();
+
         http_response_code(200);
         echo "Email sent successfully!";
-    } else {
+    } catch (Exception $e) {
         http_response_code(500);
-        echo "Oops! Something went wrong.";
+        echo "Oops! Something went wrong: {$mail->ErrorInfo}";
     }
 } else {
     http_response_code(403);
     echo "Access denied";
 }
-
-?>
